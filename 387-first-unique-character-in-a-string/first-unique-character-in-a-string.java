@@ -1,12 +1,12 @@
 class Solution {
     public int firstUniqChar(String s) {
-        Map<Character, Integer> mpp = new HashMap<>();
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
-            mpp.put(ch, mpp.getOrDefault(ch, 0)+1);
+        int n = s.length();
+        int[] freq = new int[26];
+        for(int i=0;i<n;i++){
+            freq[s.charAt(i) - 'a']++;
         }
-        for(int i=0;i<s.length();i++){
-            if(mpp.get(s.charAt(i)) == 1) return i;
+        for(int i=0;i<n;i++){
+            if(freq[s.charAt(i) - 'a'] == 1) return i;
         }
         return -1;
     }
