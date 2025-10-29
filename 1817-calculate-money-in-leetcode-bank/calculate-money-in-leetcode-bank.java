@@ -1,16 +1,14 @@
 class Solution {
     public int totalMoney(int n) {
-        int val = 0;   
-        int prev = 1; 
-        int week = 0;  
-        for(int i = 1; i <= n; i++){
-            val += prev; 
-            prev++;      
-            if(i % 7 == 0){
-                week++;
-                prev = 1 + week; 
-            }
+        int week = n / 7;
+        int day = n % 7;
+        int total = 0;
+        for(int i=0; i<week; i++){
+            total += 28 + i*7;
         }
-        return val;
+        for(int i=0; i<day; i++){
+            total += (week + 1 + i);
+        }
+        return total;
     }
 }
